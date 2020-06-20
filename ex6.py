@@ -7,4 +7,11 @@ import numpy as np
 def define_db():
     bin_arr = [0, 1]
     x_mat = np.array([np.array([x, y, z]) for x in bin_arr for y in bin_arr for z in bin_arr])
-    t = [np.logical_xor(x_mat[i][j], x_mat[i][j+1]) for i in range(0, 8) for j in range(0,2)]
+    t = []
+    for row in x_mat:
+        a = np.logical_xor(row[0], row[1])
+        t.append(int(np.logical_xor(a, row[2])))
+    return x_mat,t
+
+if __name__ == '__main__':
+    x_mat,t = define_db()
