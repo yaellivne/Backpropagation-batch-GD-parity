@@ -2,7 +2,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# section 1
 
 def calc_parity(x_vec):
     a = np.logical_xor(x_vec[0], x_vec[1])
@@ -11,7 +10,7 @@ def calc_parity(x_vec):
 
 def define_db():
     bin_arr = [0, 1]
-    x_arr = np.array([np.array([1, x, y, z]) for x in bin_arr for y in bin_arr for z in bin_arr])
+    x_arr = np.array([np.array([1, x, k, z]) for x in bin_arr for k in bin_arr for z in bin_arr])
     t_vec = []
     for row in x_arr:
         t_vec.append(calc_parity(row))
@@ -86,3 +85,4 @@ if __name__ == '__main__':
     plt.title('MSE over 100 runs vs. iteration number - \n3 hidden layers')
     plt.show()
     'End of section A'
+    'Start of section B'
