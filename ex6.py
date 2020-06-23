@@ -16,7 +16,7 @@ def define_db():
     """
     defines the needed training set
     :return:
-    x_arr - (3,8) vector of all possible binary combinations
+    x_arr - (3,8) vector of all possible binary combinations + 1 for the wi,0 weight multiplication. total: (4,8)
     t_vec - parity sign for each row in 2^n dims = (1,8)
     """
     bin_arr = [0, 1]
@@ -104,7 +104,7 @@ def backward_pass(y_output, t_parity, z_i, w_output):
 
 def main_run(problem_dims):
     """
-    :param problem_dims: # hidden layers
+    :param problem_dims: number of hidden layers
     :return: mse_vec: MSE vector calculated per iteration
     """
     mse_vec = []
@@ -136,6 +136,7 @@ def plot_results(mse_vec, n):
     plt.xlabel('Iteration number')
     plt.title(f'MSE over 100 runs vs. iteration number - \n{n} hidden layers')
     plt.show()
+
 
 def plot_both(err_vec3, err_vec6):
     """
